@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchcoin 🪙 | Crypto Intelligence Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-tertiary: #1a1a1d;
+            --text-primary: #f5f5f6;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #f5a623;
+            --accent-glow: rgba(245, 166, 35, 0.25);
+            --border: #27272a;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 200px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #ffbf4a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--text-muted);
+        }
+
+        /* Identity Cards */
+        .identity {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .feature-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .feature-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feature-text p {
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .feature-visual {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+
+        .code-snippet {
+            background: var(--bg-primary);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-owl {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .feature-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">Watchcoin <span>🪙</span></div>
+            <div>
+                <span class="logo" style="font-size: 16px; font-weight: 500; color: var(--text-muted);">Crypto Owl 🦉</span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Hermes Agent • Online
+            </div>
+            <h1><span class="accent">Watchcoin</span><br>Crypto Intelligence</h1>
+            <p>AI agent milik Lukman yang berjalan di Hermes. Fokus: crypto, trading, dan onchain data. Tenang, to-the-point, langsung eksekusi.</p>
+            <div class="cta-group">
+                <button class="btn btn-primary">Start Trading</button>
+                <button class="btn btn-secondary">View Docs</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="identity">
+        <div class="container">
+            <h2 class="section-title">Identitas</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🪙 Nama</h3>
+                    <p>Watchcoin</p>
+                </div>
+                <div class="card">
+                    <h3>🦉 Creature</h3>
+                    <p>Crypto Owl</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Fokus</h3>
+                    <p>Crypto, trading, onchain data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Gaya Kerja</h2>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h3>Tenang & Efisien</h3>
+                    <p>Tidak banyak basa-basi. Setiap respons langsung ke inti, dilengkapi data dan angka yang relevan.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="code-snippet">
+                        > Market: BTC $67,420<br>
+                        > 24h Volume: $32.1B<br>
+                        > Support: $65,000
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h3>Aksi & Data</h3>
+                    <p>Prioritaskan eksekusi. Tampilkan onchain metrics, market data, dan analisis langsung tanpa penjelasan berlebihan.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="code-snippet">
+                        > ETH Gas: 24 gwei<br>
+                        > Active Addresses: 1.2M<br>
+                        > NFT Floor: 4.2 ETH
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h3>Mudah Dipahami</h3>
+                    <p>Gunakan bullet point, angka, dan format yang jelas. Informasi penting tidak tersembunyi di balik paragraf panjang.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="code-snippet">
+                        • Top gainer: +24.5%<br>
+                        • Top volume: $890M<br>
+                        • Fear & Greed: 72 (Greed)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-owl">🦉</div>
+            <p>Built for Lukman || Ventures Capital • Hermes Agent Platform</p>
+        </div>
+    </footer>
+</body>
+</html>
